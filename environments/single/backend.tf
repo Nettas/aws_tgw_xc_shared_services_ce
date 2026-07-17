@@ -17,11 +17,16 @@
 ############################################
 
 terraform {
+  /* Using local state for now — bootstrap/ (S3+DynamoDB backend) skipped
+     for this session. Re-enable before treating this as anything but a
+     solo/lab environment; local state has no locking and no durability
+     beyond this machine.
   backend "s3" {
-    bucket         = "CHANGE-ME-tf-state-aws-tgw-xc-sharedservice-ce"
-    key            = "environments/single/terraform.tfstate"
+    bucket         = "your-bucket-name"
+    key            = "single/terraform.tfstate"
     region         = "us-east-2"
-    dynamodb_table = "aws-tgw-xc-sharedservice-ce-tf-lock"
+    dynamodb_table = "your-lock-table"
     encrypt        = true
   }
+  */
 }
