@@ -1,0 +1,30 @@
+############################################
+# environments/single/terraform.tfvars.example
+#
+# Copy this file to terraform.tfvars (which
+# is gitignored - see .gitignore) and fill in
+# real values. NEVER commit terraform.tfvars
+# or any .p12 file to git.
+############################################
+
+aws_region   = "us-east-2"
+project_name = "aws-tgw-xc-sharedservice-ce"
+
+# Restrict to your own IP or corporate VPN egress range(s). Find your
+# current public IP with: curl -s ifconfig.me
+mgmt_allowed_cidrs = [
+  "203.0.113.10/32",
+]
+
+# Optional - set to an existing EC2 key pair name if you want SSH access;
+# leave as null to rely on SSM Session Manager for the client nodes.
+ssh_key_name = null
+
+# --- F5 Distributed Cloud tenant ---------------------------------------------
+
+f5xc_api_url      = "https://YOUR-TENANT.console.ves.volterra.io/api"
+f5xc_api_p12_file = "/absolute/path/outside/this/repo/api-creds.p12"
+
+f5xc_site_name        = "shared-services-ce"
+f5xc_site_latitude    = 39.96
+f5xc_site_longitude   = -82.99
